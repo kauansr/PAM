@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Tutorial</title>
+    <script>
+
+        const OnSuccess = function(geoloc){
+            console.log("const Onsuccess = function(...");
+            console.log(geoloc);
+        
+        }
+
+        const Onerror  = function(eRR){
+            console.log("const error = function(){...");
+            console.log(eRR);
+          
+
+        }
+    
+        
+        const getGeoposition = function(){
+            console.log("const getGeoposition = function()");
+        
+            if(navigator.geolocation) {
+                console.log("browser tem suporte para geo location");
+    navigator.geolocation.getCurrentPosition(OnSuccess,Onerror);
+  } else {
+    throw new console.error("Geo Location nao suportada pelo browser");
+  }
+}
+funcaorodaaposcarregarpagina = function(){
+            console.log("essa funcao roda apos o carregamento");
+            document.getElementById("btn_obtem_longitude").addEventListener('click',getGeoposition);
+            
+            
+         
+            
+}
+    </script>
+</head>
+<body onload="funcaorodaaposcarregarpagina();">
+    <h1>Obtendo a geolocalizacao do dispositivo</h1>
+    <br><br>
+    latitude:
+    <input type="text" id="latitude">
+    <br><br>
+    longitude:
+    <input type="text" id="longitude" >
+    <br><br>
+    <button type="button" id="btn_obtem_longitude">Ok</button>
+    
+</body>
+</html>
